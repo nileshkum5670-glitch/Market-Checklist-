@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- AdMob Ads SDK -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4218496774348268~8477124613" crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0;
@@ -46,7 +48,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             padding-top: 80px;
-            padding-bottom: 80px;
+            padding-bottom: 120px; /* Increased for banner ad */
         }
 
         body.dark-mode {
@@ -1058,7 +1060,7 @@
         /* Floating Action Button for Mobile */
         .floating-action-btn {
             position: fixed;
-            bottom: 25px;
+            bottom: 90px; /* Adjusted for banner ad */
             right: 25px;
             width: 65px;
             height: 65px;
@@ -1204,10 +1206,33 @@
             margin-top: 20px;
         }
 
+        /* Ad Container Styles */
+        .ad-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            border-top: 2px solid var(--icon-border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+        }
+
+        .ad-container ins {
+            display: block;
+            margin: 0 auto;
+        }
+
         /* Responsive Design for Tablets */
         @media (min-width: 768px) {
             body {
                 padding-top: 90px;
+                padding-bottom: 130px; /* Increased for banner ad */
             }
             
             header {
@@ -1474,6 +1499,16 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Banner Ad at Bottom -->
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-app-pub-4218496774348268~8477124613"
+             data-ad-slot="9951371277"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
 
     <!-- PDF Export Modal -->
@@ -1867,8 +1902,42 @@
             populateCategoryDropdowns();
             loadSettings();
             
+            // Initialize AdMob ads
+            initializeAds();
+            
             // Add event listeners
             setupEventListeners();
+        }
+
+        // Initialize AdMob ads
+        function initializeAds() {
+            // Initialize banner ad
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            
+            // Preload interstitial ad
+            loadInterstitialAd();
+        }
+
+        // Load interstitial ad
+        function loadInterstitialAd() {
+            // This would typically be done through the AdMob SDK
+            // For web implementation, we'll simulate the ad loading
+            console.log("Interstitial ad loaded");
+        }
+
+        // Show interstitial ad
+        function showInterstitialAd() {
+            // This would typically be done through the AdMob SDK
+            // For web implementation, we'll simulate showing an ad
+            console.log("Showing interstitial ad");
+            
+            // In a real implementation, this would show the ad and then call the callback
+            // For now, we'll just call the callback directly after a short delay
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
+            });
         }
 
         // Setup Event Listeners
@@ -2140,7 +2209,9 @@
         }
 
         // Action Functions
-        function printShoppingList() {
+        async function printShoppingList() {
+            // Show interstitial ad before printing
+            await showInterstitialAd();
             window.print();
         }
 
@@ -2153,7 +2224,10 @@
         }
 
         // Enhanced PDF Generation with Perfect Layout and Color Formatting
-        function generatePdfFunc() {
+        async function generatePdfFunc() {
+            // Show interstitial ad before generating PDF
+            await showInterstitialAd();
+            
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
             
