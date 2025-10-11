@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -48,7 +49,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             padding-top: 80px;
-            padding-bottom: 30px;
+            padding-bottom: 80px;
         }
 
         body.dark-mode {
@@ -69,7 +70,6 @@
             width: 100%;
         }
 
-        /* Enhanced Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -162,7 +162,6 @@
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
         }
 
-        /* Enhanced Dashboard Summary - Smaller Layout */
         .dashboard-summary {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -238,7 +237,6 @@
             color: var(--primary);
         }
 
-        /* Enhanced Main Content */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -307,7 +305,6 @@
             gap: 10px;
         }
 
-        /* Enhanced Form Elements */
         .form-group {
             margin-bottom: 20px;
         }
@@ -338,7 +335,6 @@
             box-shadow: 0 0 0 3px rgba(56, 176, 0, 0.1);
         }
 
-        /* Enhanced Buttons */
         .btn {
             padding: 16px 24px;
             border: none;
@@ -438,7 +434,6 @@
             font-size: 13px;
         }
 
-        /* Enhanced Categories Grid */
         .categories-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -532,7 +527,6 @@
             margin-top: 20px;
         }
 
-        /* Enhanced Item Layout - Better spacing for edit/delete icons */
         .item {
             display: flex;
             align-items: center;
@@ -629,7 +623,7 @@
 
         .item-actions {
             display: flex;
-            gap: 10px; /* Increased gap between edit/delete icons */
+            gap: 10px;
         }
 
         .no-items-message {
@@ -648,7 +642,6 @@
             width: 100%;
         }
 
-        /* Enhanced Action Buttons */
         .action-buttons {
             display: flex;
             flex-direction: column;
@@ -666,7 +659,6 @@
             }
         }
 
-        /* Enhanced Settings Panel */
         .settings-panel {
             position: fixed;
             top: 0;
@@ -675,7 +667,7 @@
             height: 100vh;
             background: var(--card-bg);
             box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
-            padding: 30px;
+            padding: 20px;
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
@@ -690,25 +682,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--layout-border-color);
         }
 
         .settings-title {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 800;
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .settings-title i {
-            font-size: 28px;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            font-size: 24px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -717,12 +709,12 @@
         }
 
         .close-settings {
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
             background: var(--bg-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -738,31 +730,31 @@
         }
 
         .settings-section {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 25px;
+            padding: 20px;
             box-shadow: var(--shadow);
             border: 2px solid var(--layout-border-color);
         }
 
         .settings-section h3 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding-bottom: 15px;
+            gap: 10px;
+            padding-bottom: 12px;
             border-bottom: 2px solid var(--layout-border-color);
         }
 
         .settings-section h3 i {
-            font-size: 22px;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            font-size: 20px;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -773,14 +765,14 @@
         .theme-options {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .theme-color {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
             border: 3px solid transparent;
@@ -788,7 +780,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -809,8 +801,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: rgba(56, 176, 0, 0.05);
             border-radius: var(--radius-sm);
             border: 2px solid var(--layout-border-color);
@@ -864,14 +856,14 @@
         .layout-border-colors {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .layout-border-color {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
             border: 3px solid transparent;
@@ -879,7 +871,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -922,16 +914,15 @@
 
         .settings-btn {
             width: 100%;
-            margin-top: 15px;
-            padding: 16px;
-            font-size: 16px;
+            margin-top: 12px;
+            padding: 14px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        /* Enhanced Popup Styles */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1074,37 +1065,6 @@
             border-radius: 0 0 var(--radius) var(--radius);
         }
 
-        /* Enhanced Floating Action Button */
-        .floating-action-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--gradient);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 25px rgba(56, 176, 0, 0.4);
-            z-index: 100;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid var(--layout-border-color);
-        }
-        
-        .floating-action-btn:hover {
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 12px 30px rgba(56, 176, 0, 0.6);
-        }
-        
-        .floating-action-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Enhanced PDF Modal */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -1242,7 +1202,6 @@
             margin-top: 25px;
         }
 
-        /* Enhanced Share Notification */
         .share-notification {
             position: fixed;
             top: 100px;
@@ -1261,7 +1220,6 @@
             border: 2px solid var(--layout-border-color);
         }
         
-        /* Enhanced Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1280,7 +1238,6 @@
             animation: slideIn 0.5s ease-out;
         }
 
-        /* Enhanced Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -1299,7 +1256,6 @@
             background: var(--primary-dark);
         }
 
-        /* Loading indicator */
         .loading {
             display: none;
             text-align: center;
@@ -1317,7 +1273,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Touch-friendly improvements */
         button, .btn, .btn-icon, .header-btn, .close-settings, .close-popup {
             -webkit-tap-highlight-color: transparent;
             user-select: none;
@@ -1327,11 +1282,10 @@
             font-size: 16px;
         }
 
-        /* Responsive improvements */
         @media (min-width: 768px) {
             .settings-panel {
-                width: 500px;
-                right: -520px;
+                width: 450px;
+                right: -470px;
             }
         }
 
@@ -1373,6 +1327,994 @@
             .card {
                 padding: 20px;
             }
+            
+            .settings-panel {
+                padding: 15px;
+            }
+            
+            .settings-section {
+                padding: 15px;
+            }
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 2px solid var(--layout-border-color);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            flex: 1;
+            max-width: 80px;
+        }
+
+        .nav-item:hover {
+            background: rgba(56, 176, 0, 0.1);
+        }
+
+        .nav-item.active {
+            background: rgba(56, 176, 0, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .nav-item.active .nav-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .nav-label {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .invoice-generator {
+            display: none;
+            width: 100%;
+        }
+
+        .invoice-generator.active {
+            display: block;
+        }
+
+        .advanced-invoice-generator {
+            display: none;
+            width: 100%;
+        }
+
+        .advanced-invoice-generator.active {
+            display: block;
+        }
+
+        .invoice-header {
+            text-align: center;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .invoice-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .invoice-title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .invoice-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .invoice-main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .invoice-input-section, .invoice-preview-section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 100%;
+        }
+        
+        .invoice-section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--layout-border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .invoice-section-title i {
+            font-size: 24px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(56, 176, 0, 0.1);
+        }
+        
+        .invoice-textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid var(--layout-border-color);
+            border-radius: 10px;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .invoice-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(56, 176, 0, 0.1);
+        }
+        
+        .format-info {
+            background-color: rgba(56, 176, 0, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .format-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .format-info ul {
+            padding-left: 20px;
+        }
+        
+        .format-info li {
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .invoice-btn {
+            padding: 14px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--layout-border-color);
+        }
+        
+        .invoice-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .invoice-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .invoice-btn-download {
+            background: var(--secondary);
+        }
+        
+        .invoice-btn-download:hover {
+            background: #5a08a0;
+        }
+        
+        .invoice-preview-content {
+            border: 2px solid var(--layout-border-color);
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 200px;
+            background: var(--card-bg);
+            overflow-x: auto;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            min-width: 500px;
+        }
+        
+        .invoice-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        .invoice-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--layout-border-color);
+            font-size: 0.9rem;
+        }
+        
+        .invoice-table tr:nth-child(even) {
+            background-color: rgba(56, 176, 0, 0.05);
+        }
+        
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .invoice-total-row {
+            font-weight: bold;
+            background-color: rgba(56, 176, 0, 0.1) !important;
+        }
+        
+        .invoice-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 480px) {
+            .invoice-header {
+                padding: 15px 10px;
+            }
+            
+            .invoice-title {
+                font-size: 1.5rem;
+            }
+            
+            .invoice-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .invoice-input-section, .invoice-preview-section {
+                padding: 15px;
+            }
+            
+            .invoice-section-title {
+                font-size: 1.2rem;
+            }
+            
+            .invoice-textarea {
+                height: 180px;
+                font-size: 15px;
+                padding: 12px;
+            }
+            
+            .invoice-btn {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+            
+            .invoice-table th, 
+            .invoice-table td {
+                padding: 8px 6px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .invoice-main-content {
+                flex-direction: row;
+            }
+            
+            .invoice-input-section, .invoice-preview-section {
+                width: 50%;
+            }
+            
+            .invoice-actions {
+                flex-direction: row;
+            }
+            
+            .invoice-btn {
+                width: auto;
+            }
+        }
+
+        /* Advanced Invoice Generator Specific Styles - UPDATED LAYOUT */
+        .advanced-invoice-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+        
+        .advanced-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .advanced-app-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .advanced-input-section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .advanced-section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--layout-border-color);
+            color: var(--primary);
+        }
+        
+        .advanced-form-group {
+            margin-bottom: 15px;
+        }
+        
+        .advanced-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .advanced-input, .advanced-select, .advanced-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--layout-border-color);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .advanced-input:focus, .advanced-select:focus, .advanced-textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .currency-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        @media (min-width: 480px) {
+            .currency-container {
+                flex-direction: row;
+                align-items: end;
+            }
+        }
+        
+        .currency-select {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .manual-currency-input {
+            display: none;
+            gap: 10px;
+            margin-top: 10px;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        @media (min-width: 480px) {
+            .manual-currency-input {
+                flex-direction: row;
+                align-items: end;
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+        
+        .manual-currency-input.active {
+            display: flex;
+        }
+        
+        .logo-upload {
+            border: 2px dashed var(--layout-border-color);
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .logo-upload:hover {
+            border-color: var(--primary);
+            background-color: rgba(56, 176, 0, 0.05);
+        }
+        
+        .logo-preview {
+            max-width: 150px;
+            max-height: 100px;
+            margin: 10px auto;
+            display: none;
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        .items-table th, .items-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--layout-border-color);
+            white-space: nowrap;
+        }
+        
+        .items-table th {
+            background-color: rgba(56, 176, 0, 0.1);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .advanced-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            margin-bottom: 8px;
+            border: 2px solid var(--layout-border-color);
+            white-space: nowrap;
+        }
+        
+        @media (min-width: 480px) {
+            .advanced-btn {
+                width: auto;
+                margin-bottom: 0;
+            }
+        }
+        
+        .advanced-btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .advanced-btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .advanced-btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .advanced-btn-success:hover {
+            background-color: #27ae60;
+        }
+        
+        .advanced-btn-danger {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .advanced-btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .advanced-btn-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .advanced-btn-warning:hover {
+            background-color: #e67e22;
+        }
+        
+        .advanced-btn-info {
+            background-color: var(--info);
+            color: white;
+        }
+        
+        .advanced-btn-info:hover {
+            background-color: #138496;
+        }
+        
+        .advanced-btn-small {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        
+        .advanced-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        
+        .currency-symbol {
+            font-weight: bold;
+        }
+        
+        .item-input-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: end;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .item-input-row {
+                grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+            }
+        }
+        
+        .manual-unit-input {
+            display: none;
+            gap: 10px;
+            grid-column: 1 / -1;
+            width: 100%;
+        }
+        
+        .manual-unit-input.active {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        /* UPDATED: Improved invoice layout */
+        .advanced-invoice-content {
+            display: none;
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary);
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .advanced-invoice-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--success));
+        }
+
+        .advanced-invoice-content.active {
+            display: block;
+        }
+
+        .invoice-pdf-header {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        
+        .advanced-invoice-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--layout-border-color);
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .advanced-invoice-header {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .advanced-invoice-title-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .advanced-invoice-title-section {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        
+        .advanced-invoice-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .advanced-invoice-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .advanced-invoice-logo {
+            max-width: 120px;
+            max-height: 70px;
+        }
+        
+        .advanced-invoice-details {
+            text-align: left;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .advanced-invoice-details {
+                text-align: right;
+                margin-top: 0;
+                width: auto;
+            }
+        }
+        
+        .advanced-invoice-details p {
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .advanced-invoice-top-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .advanced-invoice-top-section {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .advanced-invoice-company-info,
+        .advanced-invoice-client-info {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .advanced-invoice-info-box {
+            padding: 15px;
+            border: 1px solid var(--layout-border-color);
+            border-radius: 8px;
+            background-color: rgba(56, 176, 0, 0.05);
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .advanced-invoice-info-box h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--layout-border-color);
+        }
+        
+        .advanced-invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--layout-border-color);
+            overflow-x: auto;
+            display: block;
+        }
+        
+        .advanced-invoice-table th, .advanced-invoice-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--layout-border-color);
+            white-space: nowrap;
+        }
+        
+        .advanced-invoice-table th {
+            background-color: rgba(56, 176, 0, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .advanced-invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .advanced-invoice-totals {
+            width: 100%;
+            margin-left: 0;
+            background-color: rgba(56, 176, 0, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--layout-border-color);
+            box-sizing: border-box;
+        }
+        
+        @media (min-width: 480px) {
+            .advanced-invoice-totals {
+                width: 300px;
+                margin-left: auto;
+            }
+        }
+        
+        .advanced-total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--layout-border-color);
+        }
+        
+        .advanced-total-row.final {
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+            padding-top: 12px;
+        }
+
+        .advanced-notes {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: rgba(56, 176, 0, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .advanced-notes h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* UPDATED: QR Code position - now beside logo */
+        .advanced-qr-code-beside-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* UPDATED: Logo and QR code container */
+        .logo-qr-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* UPDATED: From and To sections side by side */
+        .from-to-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .from-to-container {
+                flex-direction: row;
+            }
+        }
+        
+        .from-section, .to-section {
+            flex: 1;
+        }
+
+        .qr-code-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            padding: 10px;
+        }
+        
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background-color: var(--card-bg);
+            padding: 8px;
+            border: 1px solid var(--layout-border-color);
+            border-radius: 4px;
+        }
+        
+        .toggle-qr {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border: 2px solid var(--layout-border-color);
+        }
+        
+        .qr-options {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(56, 176, 0, 0.05);
+            border-radius: 4px;
+            border: 1px solid var(--layout-border-color);
+        }
+        
+        .qr-options.active {
+            display: block;
+        }
+        
+        .qr-option-group {
+            margin-bottom: 10px;
+        }
+        
+        .qr-option-group label {
+            font-size: 0.85rem;
+        }
+        
+        .invoice-pdf-footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            border-top: 2px solid var(--layout-border-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .profile-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(56, 176, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid var(--layout-border-color);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        
+        .profile-select {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        .profile-select select {
+            width: 100%;
+        }
+        
+        .notebook-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .notebook-actions {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .advanced-input, .advanced-select, .advanced-textarea {
+                font-size: 16px;
+            }
+            
+            .items-table, .advanced-invoice-table {
+                font-size: 0.75rem;
+            }
+            
+            .items-table th, .items-table td,
+            .advanced-invoice-table th, .advanced-invoice-table td {
+                padding: 6px 4px;
+            }
+            
+            .advanced-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -1399,66 +2341,417 @@
     </header>
 
     <div class="container">
-        <!-- Enhanced Dashboard Summary - Smaller Layout -->
-        <div class="dashboard-summary">
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="fas fa-layer-group"></i>
+        <!-- Shopping List Section (Default View) -->
+        <div id="shoppingListSection">
+            <!-- Enhanced Dashboard Summary - Smaller Layout -->
+            <div class="dashboard-summary">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="summary-title">Categories</div>
+                    <div class="summary-value" id="categoryCount">0</div>
                 </div>
-                <div class="summary-title">Categories</div>
-                <div class="summary-value" id="categoryCount">0</div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <div class="summary-title">Items</div>
+                    <div class="summary-value" id="itemCount">0</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="summary-title">Complete</div>
+                    <div class="summary-value" id="completeCount">0</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="summary-title">Total Value</div>
+                    <div class="summary-value" id="totalValue">₹0</div>
+                </div>
             </div>
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="fas fa-cart-plus"></i>
+
+            <!-- Enhanced Main Content -->
+            <div class="main-content">
+                <!-- Enhanced Categories Grid -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-layer-group"></i> Your Categories</h2>
+                        <div class="card-actions">
+                            <button class="btn-icon btn-primary" id="openCategoryPopup" title="Add Category">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="categoriesContainer">
+                        <div class="empty-state" id="emptyCategories">
+                            <i class="fas fa-layer-group"></i>
+                            <p>No categories added yet. Tap the + icon to add categories.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="summary-title">Items</div>
-                <div class="summary-value" id="itemCount">0</div>
-            </div>
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="fas fa-check-circle"></i>
+
+                <!-- Enhanced Action Buttons -->
+                <div class="card">
+                    <div class="action-buttons">
+                        <button class="btn btn-warning" id="printList"><i class="fas fa-print"></i> Print List</button>
+                        <button class="btn btn-danger" id="saveAsPdf"><i class="fas fa-file-pdf"></i> Bill Slip</button>
+                        <button class="btn btn-success" id="shareList"><i class="fas fa-share-alt"></i> Share List</button>
+                    </div>
                 </div>
-                <div class="summary-title">Complete</div>
-                <div class="summary-value" id="completeCount">0</div>
-            </div>
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="fas fa-rupee-sign"></i>
-                </div>
-                <div class="summary-title">Total Value</div>
-                <div class="summary-value" id="totalValue">₹0</div>
             </div>
         </div>
 
-        <!-- Enhanced Main Content -->
-        <div class="main-content">
-            <!-- Enhanced Categories Grid -->
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title"><i class="fas fa-layer-group"></i> Your Categories</h2>
-                    <div class="card-actions">
-                        <button class="btn-icon btn-primary" id="openCategoryPopup" title="Add Category">
-                            <i class="fas fa-plus"></i>
+        <!-- Simple Invoice Generator Section -->
+        <div class="invoice-generator" id="invoiceGeneratorSection">
+            <div class="invoice-header">
+                <h1 class="invoice-title">Product Invoice Generator</h1>
+                <p class="invoice-subtitle">Create and download product invoices in PDF format</p>
+            </div>
+            
+            <div class="invoice-main-content">
+                <div class="invoice-input-section">
+                    <h2 class="invoice-section-title">
+                        <i class="fas fa-edit"></i>
+                        Input Your Products
+                    </h2>
+                    
+                    <div class="format-info">
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                            Format Instructions
+                        </h3>
+                        <p>Enter your product details in the following format:</p>
+                        <ul>
+                            <li>Each product on a new line</li>
+                            <li>Separate fields with commas: Product Name, Unit, Value, Quantity</li>
+                            <li>Example: Laptop, pieces, 50000, 2</li>
+                        </ul>
+                    </div>
+                    
+                    <textarea class="invoice-textarea" id="productInput" placeholder="Enter product details here...
+Example:
+Laptop, pieces, 50000, 2
+Mouse, pieces, 500, 5
+Keyboard, pieces, 1200, 3"></textarea>
+                    
+                    <div class="notebook-actions">
+                        <button id="generatePreview" class="invoice-btn">
+                            <i class="fas fa-eye"></i>
+                            Generate Preview
+                        </button>
+                        <button id="clearNotebook" class="invoice-btn btn-secondary">
+                            <i class="fas fa-trash"></i>
+                            Clear
                         </button>
                     </div>
                 </div>
-                <div id="categoriesContainer">
-                    <div class="empty-state" id="emptyCategories">
-                        <i class="fas fa-layer-group"></i>
-                        <p>No categories added yet. Tap the + icon to add categories.</p>
+                
+                <div class="invoice-preview-section">
+                    <h2 class="invoice-section-title">
+                        <i class="fas fa-file-invoice"></i>
+                        Invoice Preview
+                    </h2>
+                    
+                    <div class="invoice-preview-content" id="invoicePreview">
+                        <p>Your invoice preview will appear here after you click "Generate Preview".</p>
+                    </div>
+                    
+                    <div class="invoice-actions">
+                        <button id="downloadPDF" class="invoice-btn invoice-btn-download" disabled>
+                            <i class="fas fa-download"></i>
+                            Download as PDF
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Enhanced Action Buttons -->
-            <div class="card">
-                <div class="action-buttons">
-                    <button class="btn btn-warning" id="printList"><i class="fas fa-print"></i> Print List</button>
-                    <button class="btn btn-danger" id="saveAsPdf"><i class="fas fa-file-pdf"></i> Bill Slip</button>
-                    <button class="btn btn-success" id="shareList"><i class="fas fa-share-alt"></i> Share List</button>
+        <!-- Advanced Invoice Generator Section -->
+        <div class="advanced-invoice-generator" id="advancedInvoiceGeneratorSection">
+            <div class="advanced-invoice-container">
+                <div class="advanced-header">
+                    <h1>Advanced Invoice Generator</h1>
+                    <p class="app-description">Create professional invoices with custom currencies and measurement units</p>
+                </div>
+                
+                <div class="advanced-app-container">
+                    <div class="advanced-input-section">
+                        <h2 class="advanced-section-title">Invoice Details</h2>
+                        
+                        <div class="advanced-form-group">
+                            <label for="invoice-number" class="advanced-label">Invoice Number</label>
+                            <input type="text" id="invoice-number" class="advanced-input" placeholder="INV-001">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="invoice-date" class="advanced-label">Invoice Date</label>
+                            <input type="date" id="invoice-date" class="advanced-input">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="due-date" class="advanced-label">Due Date</label>
+                            <input type="date" id="due-date" class="advanced-input">
+                        </div>
+                        
+                        <h2 class="advanced-section-title">Currency Selection</h2>
+                        
+                        <div class="advanced-form-group">
+                            <div class="currency-container">
+                                <div class="currency-select">
+                                    <label for="currency-select" class="advanced-label">Select Currency</label>
+                                    <select id="currency-select" class="advanced-select">
+                                        <option value="USD" data-symbol="$">US Dollar (USD) - $</option>
+                                        <option value="INR" data-symbol="₹">Indian Rupee (INR) - ₹</option>
+                                        <option value="EUR" data-symbol="€">Euro (EUR) - €</option>
+                                        <option value="GBP" data-symbol="£">British Pound (GBP) - £</option>
+                                        <option value="JPY" data-symbol="¥">Japanese Yen (JPY) - ¥</option>
+                                        <option value="AUD" data-symbol="A$">Australian Dollar (AUD) - A$</option>
+                                        <option value="CAD" data-symbol="C$">Canadian Dollar (CAD) - C$</option>
+                                        <option value="CHF" data-symbol="CHF">Swiss Franc (CHF) - CHF</option>
+                                        <option value="CNY" data-symbol="¥">Chinese Yuan (CNY) - ¥</option>
+                                        <option value="SEK" data-symbol="kr">Swedish Krona (SEK) - kr</option>
+                                        <option value="NZD" data-symbol="NZ$">New Zealand Dollar (NZD) - NZ$</option>
+                                        <option value="MXN" data-symbol="MX$">Mexican Peso (MXN) - MX$</option>
+                                        <option value="SGD" data-symbol="S$">Singapore Dollar (SGD) - S$</option>
+                                        <option value="HKD" data-symbol="HK$">Hong Kong Dollar (HKD) - HK$</option>
+                                        <option value="NOK" data-symbol="kr">Norwegian Krone (NOK) - kr</option>
+                                        <option value="custom">Custom Currency</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button class="advanced-btn advanced-btn-primary" id="apply-currency">
+                                        <i class="fas fa-check"></i> Apply
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="manual-currency-input" id="manual-currency-input">
+                                <input type="text" id="custom-currency-code" class="advanced-input" placeholder="Currency Code (e.g., BTC)">
+                                <input type="text" id="custom-currency-symbol" class="advanced-input" placeholder="Currency Symbol (e.g., ฿)">
+                            </div>
+                        </div>
+                        
+                        <h2 class="advanced-section-title">From (Your Business)</h2>
+                        
+                        <div class="advanced-form-group">
+                            <label for="business-name" class="advanced-label">Business Name</label>
+                            <input type="text" id="business-name" class="advanced-input" placeholder="Your Company Name">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="business-logo" class="advanced-label">Business Logo</label>
+                            <div class="logo-upload" id="logo-upload-area">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 10px; color: var(--primary);"></i>
+                                <p>Click to upload your logo</p>
+                                <p style="font-size: 0.8rem; color: var(--text-light);">PNG, JPG up to 2MB</p>
+                                <img id="logo-preview" class="logo-preview" alt="Logo Preview">
+                            </div>
+                            <input type="file" id="business-logo" accept="image/*" style="display: none;">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="business-address" class="advanced-label">Business Address</label>
+                            <textarea id="business-address" class="advanced-textarea" rows="3" placeholder="Street, City, State, ZIP Code"></textarea>
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="business-email" class="advanced-label">Email</label>
+                            <input type="email" id="business-email" class="advanced-input" placeholder="contact@yourcompany.com">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="business-phone" class="advanced-label">Phone</label>
+                            <input type="text" id="business-phone" class="advanced-input" placeholder="+1 (555) 123-4567">
+                        </div>
+                        
+                        <h2 class="advanced-section-title">To (Client)</h2>
+                        
+                        <div class="advanced-form-group">
+                            <label for="client-name" class="advanced-label">Client Name</label>
+                            <input type="text" id="client-name" class="advanced-input" placeholder="Client Company Name">
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <label for="client-address" class="advanced-label">Client Address</label>
+                            <textarea id="client-address" class="advanced-textarea" rows="3" placeholder="Street, City, State, ZIP Code"></textarea>
+                        </div>
+                        
+                        <h2 class="advanced-section-title">Items</h2>
+                        
+                        <div class="advanced-form-group">
+                            <div class="item-inputs">
+                                <div class="item-input-row">
+                                    <div>
+                                        <label for="item-name" class="advanced-label">Item Name</label>
+                                        <input type="text" id="item-name" class="advanced-input" placeholder="Item Name">
+                                    </div>
+                                    <div>
+                                        <label for="item-quantity" class="advanced-label">Quantity</label>
+                                        <input type="number" id="item-quantity" class="advanced-input" placeholder="Qty" min="1" value="1">
+                                    </div>
+                                    <div>
+                                        <label for="item-unit" class="advanced-label">Unit</label>
+                                        <select id="item-unit" class="advanced-select">
+                                            <option value="Pieces">Pieces</option>
+                                            <option value="Kilograms">Kilograms</option>
+                                            <option value="Grams">Grams</option>
+                                            <option value="Liters">Liters</option>
+                                            <option value="Milliliters">Milliliters</option>
+                                            <option value="Pack">Pack</option>
+                                            <option value="Box">Box</option>
+                                            <option value="Bottle">Bottle</option>
+                                            <option value="Darjan">Darjan</option>
+                                            <option value="Meter">Meter</option>
+                                            <option value="Centimeter">Centimeter</option>
+                                            <option value="Square Meter">Square Meter</option>
+                                            <option value="custom">Custom Unit</option>
+                                        </select>
+                                    </div>
+                                    <div class="manual-unit-input" id="manual-unit-input">
+                                        <input type="text" id="custom-unit" class="advanced-input" placeholder="Enter custom unit">
+                                    </div>
+                                    <div>
+                                        <label for="item-price" class="advanced-label">Price</label>
+                                        <input type="number" id="item-price" class="advanced-input" placeholder="Price" min="0" step="0.01">
+                                    </div>
+                                    <div>
+                                        <label for="item-tax" class="advanced-label">Tax %</label>
+                                        <input type="number" id="item-tax" class="advanced-input" placeholder="Tax %" min="0" step="0.1" value="0">
+                                    </div>
+                                    <div>
+                                        <button class="advanced-btn advanced-btn-primary" id="add-item">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <table class="items-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
+                                    <th>Price</th>
+                                    <th>Tax</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="items-list">
+                                <!-- Items will be added here dynamically -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="advanced-form-group">
+                            <label for="notes" class="advanced-label">Notes</label>
+                            <textarea id="notes" class="advanced-textarea" rows="3" placeholder="Thank you for your business!"></textarea>
+                        </div>
+                        
+                        <div class="advanced-form-group">
+                            <h3 class="advanced-section-title">QR Code Options</h3>
+                            <button class="toggle-qr" id="toggle-qr">Show QR Code Options</button>
+                            
+                            <div class="qr-options" id="qr-options">
+                                <div class="qr-option-group">
+                                    <label for="qr-content" class="advanced-label">QR Code Content</label>
+                                    <select id="qr-content" class="advanced-select">
+                                        <option value="invoice">Invoice Details</option>
+                                        <option value="payment">Payment Link</option>
+                                        <option value="website">Website URL</option>
+                                        <option value="custom">Custom Text</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="qr-option-group" id="custom-qr-group" style="display: none;">
+                                    <label for="custom-qr-text" class="advanced-label">Custom QR Text</label>
+                                    <input type="text" id="custom-qr-text" class="advanced-input" placeholder="Enter custom text for QR code">
+                                </div>
+                                
+                                <div class="qr-option-group" id="payment-qr-group" style="display: none;">
+                                    <label for="payment-link" class="advanced-label">Payment Link</label>
+                                    <input type="text" id="payment-link" class="advanced-input" placeholder="https://payment.example.com/pay">
+                                </div>
+                                
+                                <div class="qr-option-group" id="website-qr-group" style="display: none;">
+                                    <label for="website-url" class="advanced-label">Website URL</label>
+                                    <input type="text" id="website-url" class="advanced-input" placeholder="https://yourwebsite.com">
+                                </div>
+                                
+                                <button class="advanced-btn advanced-btn-primary" id="generate-qr">Generate QR Code</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Management Section -->
+                        <div class="profile-section">
+                            <h3 class="advanced-section-title">Profile Management</h3>
+                            <div class="advanced-form-group profile-select">
+                                <label for="profile-select" class="advanced-label">Select Profile</label>
+                                <select id="profile-select" class="advanced-select">
+                                    <option value="">-- Select a profile --</option>
+                                </select>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="advanced-btn advanced-btn-info" id="save-profile">
+                                    <i class="fas fa-save"></i> Save Current Profile
+                                </button>
+                                <button class="advanced-btn advanced-btn-primary" id="load-profile">
+                                    <i class="fas fa-folder-open"></i> Load Profile
+                                </button>
+                                <button class="advanced-btn advanced-btn-danger" id="delete-profile">
+                                    <i class="fas fa-trash"></i> Delete Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="advanced-actions">
+                            <button class="advanced-btn advanced-btn-primary" id="generate-invoice">
+                                <i class="fas fa-file-invoice"></i> Generate Invoice
+                            </button>
+                            <button class="advanced-btn advanced-btn-success" id="print-invoice">
+                                <i class="fas fa-print"></i> Print Invoice
+                            </button>
+                            <button class="advanced-btn advanced-btn-warning" id="download-pdf">
+                                <i class="fas fa-file-pdf"></i> Download PDF
+                            </button>
+                            <button class="advanced-btn advanced-btn-danger" id="clear-all">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Invoice will be displayed here after generation -->
+                    <div class="advanced-invoice-content" id="advanced-invoice-content">
+                        <!-- Advanced Invoice content will be generated here -->
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <div class="nav-item active" id="navHome">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-label">Home</span>
+        </div>
+        <div class="nav-item" id="navSettings">
+            <i class="fas fa-cog nav-icon"></i>
+            <span class="nav-label">Settings</span>
+        </div>
+        <div class="nav-item" id="navNotebook">
+            <i class="fas fa-book nav-icon"></i>
+            <span class="nav-label">Notebook</span>
+        </div>
+        <div class="nav-item" id="navInvoice">
+            <i class="fas fa-receipt nav-icon"></i>
+            <span class="nav-label">Invoice</span>
         </div>
     </div>
 
@@ -1502,11 +2795,6 @@
     <div class="share-notification" id="shareNotification">
         <i class="fas fa-check-circle"></i> Shopping list copied to clipboard!
     </div>
-
-    <!-- Enhanced Floating Action Button -->
-    <button class="floating-action-btn" id="floatingActionBtn">
-        <i class="fas fa-plus"></i>
-    </button>
 
     <!-- Enhanced Add Category Popup -->
     <div class="popup-overlay" id="categoryPopup">
@@ -1683,7 +2971,7 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            <h4 style="margin: 20px 0 15px 0;">Primary Color</h4>
+            <h4 style="margin: 15px 0 12px 0;">Primary Color</h4>
             <div class="theme-options">
                 <div class="theme-color selected" style="background-color: #38b000;" data-color="#38b000">
                     <i class="fas fa-check"></i>
@@ -1723,7 +3011,7 @@
                 </div>
             </div>
             
-            <h4 style="margin: 25px 0 15px 0;">Layout Border Color</h4>
+            <h4 style="margin: 20px 0 12px 0;">Layout Border Color</h4>
             <div class="layout-border-colors">
                 <div class="layout-border-color selected" style="background-color: #38b000;" data-color="#38b000">
                     <i class="fas fa-check"></i>
@@ -1774,6 +3062,7 @@
         let currentEditingItemId = null;
         let selectedPdfOption = 'download';
         let currentCategoryId = null;
+        let currentView = 'shoppingList'; // 'shoppingList', 'invoice', or 'advancedInvoice'
 
         // DOM Elements
         const categoriesContainer = document.getElementById('categoriesContainer');
@@ -1782,6 +3071,11 @@
         const itemCount = document.getElementById('itemCount');
         const completeCount = document.getElementById('completeCount');
         const totalValue = document.getElementById('totalValue');
+        
+        // Section Elements
+        const shoppingListSection = document.getElementById('shoppingListSection');
+        const invoiceGeneratorSection = document.getElementById('invoiceGeneratorSection');
+        const advancedInvoiceGeneratorSection = document.getElementById('advancedInvoiceGeneratorSection');
         
         // Popup Elements
         const categoryPopup = document.getElementById('categoryPopup');
@@ -1793,7 +3087,6 @@
         // Buttons
         const openCategoryPopupSide = document.getElementById('openCategoryPopupSide');
         const openCategoryPopup = document.getElementById('openCategoryPopup');
-        const floatingActionBtn = document.getElementById('floatingActionBtn');
         const settingsButton = document.getElementById('settingsButton');
         const closeSettings = document.getElementById('closeSettings');
         const printList = document.getElementById('printList');
@@ -1846,6 +3139,25 @@
         const importData = document.getElementById('importData');
         const clearData = document.getElementById('clearData');
 
+        // Bottom Navigation Elements
+        const navHome = document.getElementById('navHome');
+        const navSettings = document.getElementById('navSettings');
+        const navNotebook = document.getElementById('navNotebook');
+        const navInvoice = document.getElementById('navInvoice');
+
+        // Invoice Generator Elements
+        const productInput = document.getElementById('productInput');
+        const generatePreviewBtn = document.getElementById('generatePreview');
+        const downloadPDFBtn = document.getElementById('downloadPDF');
+        const invoicePreview = document.getElementById('invoicePreview');
+        const clearNotebookBtn = document.getElementById('clearNotebook');
+        let invoiceProducts = [];
+
+        // Advanced Invoice Generator Elements
+        let advancedInvoiceItems = [];
+        let selectedCurrency = 'USD';
+        let selectedCurrencySymbol = '$';
+
         // Initialize App
         function initApp() {
             updateDashboard();
@@ -1855,6 +3167,9 @@
             
             // Add event listeners
             setupEventListeners();
+            
+            // Initialize Advanced Invoice Generator
+            initAdvancedInvoiceGenerator();
         }
 
         // Setup Event Listeners
@@ -1862,7 +3177,6 @@
             // Category Popup
             openCategoryPopupSide.addEventListener('click', openCategoryPopupFunc);
             openCategoryPopup.addEventListener('click', openCategoryPopupFunc);
-            floatingActionBtn.addEventListener('click', openCategoryPopupFunc);
             closeCategoryPopup.addEventListener('click', closeCategoryPopupFunc);
             cancelCategory.addEventListener('click', closeCategoryPopupFunc);
             saveCategory.addEventListener('click', saveCategoryFunc);
@@ -1918,7 +3232,1121 @@
             exportData.addEventListener('click', exportAppData);
             importData.addEventListener('click', importAppData);
             clearData.addEventListener('click', clearAppData);
+            
+            // Bottom Navigation
+            navHome.addEventListener('click', () => navigateTo('home'));
+            navSettings.addEventListener('click', () => navigateTo('settings'));
+            navNotebook.addEventListener('click', () => navigateTo('notebook'));
+            navInvoice.addEventListener('click', () => navigateTo('invoice'));
+            
+            // Invoice Generator
+            generatePreviewBtn.addEventListener('click', generateInvoicePreview);
+            downloadPDFBtn.addEventListener('click', generateInvoicePDF);
+            clearNotebookBtn.addEventListener('click', clearNotebook);
         }
+
+        // Navigation function
+        function navigateTo(section) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked nav item
+            if (section === 'home') {
+                navHome.classList.add('active');
+                showShoppingList();
+            } else if (section === 'settings') {
+                navSettings.classList.add('active');
+                openSettings();
+            } else if (section === 'notebook') {
+                navNotebook.classList.add('active');
+                showInvoiceGenerator();
+            } else if (section === 'invoice') {
+                navInvoice.classList.add('active');
+                showAdvancedInvoiceGenerator();
+            }
+        }
+
+        // Show shopping list section
+        function showShoppingList() {
+            shoppingListSection.style.display = 'block';
+            invoiceGeneratorSection.style.display = 'none';
+            advancedInvoiceGeneratorSection.style.display = 'none';
+            currentView = 'shoppingList';
+        }
+
+        // Show invoice generator section
+        function showInvoiceGenerator() {
+            shoppingListSection.style.display = 'none';
+            invoiceGeneratorSection.style.display = 'block';
+            advancedInvoiceGeneratorSection.style.display = 'none';
+            currentView = 'invoice';
+        }
+
+        // Show advanced invoice generator section
+        function showAdvancedInvoiceGenerator() {
+            shoppingListSection.style.display = 'none';
+            invoiceGeneratorSection.style.display = 'none';
+            advancedInvoiceGeneratorSection.style.display = 'block';
+            currentView = 'advancedInvoice';
+        }
+
+        // Invoice Generator Functions
+        function generateInvoicePreview() {
+            const inputText = productInput.value.trim();
+            if (!inputText) {
+                alert('Please enter product details.');
+                return;
+            }
+            
+            invoiceProducts = parseProductInput(inputText);
+            renderInvoicePreview(invoiceProducts);
+            downloadPDFBtn.disabled = false;
+            
+            // Scroll to preview section on mobile
+            if (window.innerWidth < 768) {
+                document.querySelector('.invoice-preview-section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }
+        }
+
+        function clearNotebook() {
+            productInput.value = '';
+            invoicePreview.innerHTML = '<p>Your invoice preview will appear here after you click "Generate Preview".</p>';
+            downloadPDFBtn.disabled = true;
+        }
+
+        function parseProductInput(inputText) {
+            const lines = inputText.split('\n');
+            const products = [];
+            
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+                
+                const parts = line.split(',').map(part => part.trim());
+                if (parts.length < 4) {
+                    console.warn('Invalid product format:', line);
+                    return;
+                }
+                
+                const productName = parts[0];
+                const unit = parts[1];
+                const value = parseFloat(parts[2]);
+                const quantity = parseInt(parts[3]);
+                
+                if (isNaN(value) || isNaN(quantity)) {
+                    console.warn('Invalid numeric values in:', line);
+                    return;
+                }
+                
+                const totalValue = value * quantity;
+                
+                products.push({
+                    productName,
+                    unit,
+                    value,
+                    quantity,
+                    totalValue
+                });
+            });
+            
+            return products;
+        }
+
+        function renderInvoicePreview(products) {
+            if (products.length === 0) {
+                invoicePreview.innerHTML = '<p>No valid products found. Please check your input format.</p>';
+                return;
+            }
+            
+            let html = `
+                <h3>Product Invoice</h3>
+                <p>Date: ${new Date().toLocaleDateString()}</p>
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Unit</th>
+                            <th>Value</th>
+                            <th>Quantity</th>
+                            <th>Total Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            let grandTotal = 0;
+            
+            products.forEach(product => {
+                html += `
+                    <tr>
+                        <td>${product.productName}</td>
+                        <td>${product.unit}</td>
+                        <td>₹${product.value.toLocaleString()}</td>
+                        <td>${product.quantity}</td>
+                        <td>₹${product.totalValue.toLocaleString()}</td>
+                    </tr>
+                `;
+                grandTotal += product.totalValue;
+            });
+            
+            html += `
+                    <tr class="invoice-total-row">
+                        <td colspan="4" style="text-align: right;">Grand Total:</td>
+                        <td>₹${grandTotal.toLocaleString()}</td>
+                    </tr>
+                </tbody>
+                </table>
+            `;
+            
+            invoicePreview.innerHTML = html;
+        }
+
+        function generateInvoicePDF() {
+            if (invoiceProducts.length === 0) {
+                alert('Please generate a preview first.');
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Add title
+            doc.setFontSize(20);
+            doc.text('Product Invoice', 105, 15, { align: 'center' });
+            
+            // Add date
+            doc.setFontSize(12);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+            
+            // Add table headers
+            doc.setFontSize(12);
+            doc.setFillColor(41, 128, 185);
+            doc.setTextColor(255, 255, 255);
+            doc.rect(15, 35, 180, 10, 'F');
+            doc.text('Product Name', 20, 41);
+            doc.text('Unit', 70, 41);
+            doc.text('Value', 100, 41);
+            doc.text('Quantity', 130, 41);
+            doc.text('Total Value', 160, 41);
+            
+            // Add product rows
+            doc.setTextColor(0, 0, 0);
+            let yPosition = 50;
+            let grandTotal = 0;
+            
+            invoiceProducts.forEach((product, index) => {
+                if (yPosition > 270) {
+                    doc.addPage();
+                    yPosition = 20;
+                }
+                
+                // Alternate row colors
+                if (index % 2 === 0) {
+                    doc.setFillColor(240, 240, 240);
+                    doc.rect(15, yPosition - 5, 180, 10, 'F');
+                }
+                
+                doc.text(product.productName, 20, yPosition);
+                doc.text(product.unit, 70, yPosition);
+                doc.text('₹' + product.value.toLocaleString(), 100, yPosition);
+                doc.text(product.quantity.toString(), 130, yPosition);
+                doc.text('₹' + product.totalValue.toLocaleString(), 160, yPosition);
+                
+                yPosition += 10;
+                grandTotal += product.totalValue;
+            });
+            
+            // Add grand total
+            yPosition += 5;
+            doc.setFillColor(200, 230, 255);
+            doc.rect(15, yPosition - 5, 180, 10, 'F');
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'bold');
+            doc.text('Grand Total:', 120, yPosition);
+            doc.text('₹' + grandTotal.toLocaleString(), 160, yPosition);
+            
+            // Save the PDF
+            doc.save('product_invoice.pdf');
+        }
+
+        // Advanced Invoice Generator Functions - UPDATED LAYOUT
+        function initAdvancedInvoiceGenerator() {
+            // Set current date as default for invoice date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('invoice-date').value = today;
+            
+            // Set due date to 30 days from today
+            const dueDate = new Date();
+            dueDate.setDate(dueDate.getDate() + 30);
+            document.getElementById('due-date').value = dueDate.toISOString().split('T')[0];
+            
+            // Generate a random invoice number
+            document.getElementById('invoice-number').value = 'INV-' + Math.floor(1000 + Math.random() * 9000);
+            
+            // Currency selection
+            const currencySelect = document.getElementById('currency-select');
+            const manualCurrencyInput = document.getElementById('manual-currency-input');
+            
+            currencySelect.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    manualCurrencyInput.classList.add('active');
+                } else {
+                    manualCurrencyInput.classList.remove('active');
+                    const selectedOption = this.options[this.selectedIndex];
+                    selectedCurrency = selectedOption.value;
+                    selectedCurrencySymbol = selectedOption.getAttribute('data-symbol');
+                }
+            });
+            
+            // Apply currency button
+            document.getElementById('apply-currency').addEventListener('click', function() {
+                if (currencySelect.value === 'custom') {
+                    const customCode = document.getElementById('custom-currency-code').value.trim();
+                    const customSymbol = document.getElementById('custom-currency-symbol').value.trim();
+                    
+                    if (customCode && customSymbol) {
+                        selectedCurrency = customCode;
+                        selectedCurrencySymbol = customSymbol;
+                        updateCurrencySymbol();
+                    } else {
+                        alert('Please enter both currency code and symbol');
+                    }
+                } else {
+                    updateCurrencySymbol();
+                }
+            });
+            
+            // Unit selection with custom option
+            document.getElementById('item-unit').addEventListener('change', function() {
+                const manualUnitInput = document.getElementById('manual-unit-input');
+                if (this.value === 'custom') {
+                    manualUnitInput.classList.add('active');
+                } else {
+                    manualUnitInput.classList.remove('active');
+                    document.getElementById('custom-unit').value = '';
+                }
+            });
+            
+            // Logo upload functionality
+            const logoUploadArea = document.getElementById('logo-upload-area');
+            const logoInput = document.getElementById('business-logo');
+            const logoPreview = document.getElementById('logo-preview');
+            
+            logoUploadArea.addEventListener('click', function() {
+                logoInput.click();
+            });
+            
+            logoInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        logoPreview.src = e.target.result;
+                        logoPreview.style.display = 'block';
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+            
+            // Add item to the list
+            document.getElementById('add-item').addEventListener('click', addAdvancedItem);
+            
+            // Generate invoice
+            document.getElementById('generate-invoice').addEventListener('click', generateAdvancedInvoice);
+            
+            // Print invoice
+            document.getElementById('print-invoice').addEventListener('click', function() {
+                const invoiceContent = document.getElementById('advanced-invoice-content');
+                
+                if (!invoiceContent.classList.contains('active')) {
+                    alert('Please generate an invoice first by clicking "Generate Invoice"');
+                    return;
+                }
+                
+                // Create a temporary print window
+                const printWindow = window.open('', '_blank');
+                const invoiceHTML = document.getElementById('advanced-invoice-content').innerHTML;
+                
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Invoice Print</title>
+                        <style>
+                            body {
+                                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                                margin: 0;
+                                padding: 20px;
+                                color: #333;
+                                background: white;
+                            }
+                            .advanced-invoice-content {
+                                width: 100%;
+                                max-width: 100%;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            .invoice-pdf-header {
+                                text-align: center;
+                                padding: 15px;
+                                background: linear-gradient(135deg, #3498db, #2980b9);
+                                color: white;
+                                margin-bottom: 15px;
+                                border-radius: 8px;
+                            }
+                            .logo-qr-container {
+                                display: flex;
+                                align-items: center;
+                                gap: 20px;
+                                margin-bottom: 20px;
+                            }
+                            .from-to-container {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 20px;
+                                margin-bottom: 20px;
+                            }
+                            .from-section, .to-section {
+                                flex: 1;
+                            }
+                            .advanced-invoice-header {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: flex-start;
+                                margin-bottom: 15px;
+                                padding-bottom: 15px;
+                                border-bottom: 2px solid #ddd;
+                            }
+                            .advanced-invoice-title-section {
+                                display: flex;
+                                align-items: flex-start;
+                                gap: 20px;
+                                flex: 1;
+                            }
+                            .advanced-invoice-title {
+                                font-size: 1.5rem;
+                                color: #2980b9;
+                                margin-bottom: 10px;
+                            }
+                            .advanced-invoice-logo {
+                                max-width: 120px;
+                                max-height: 70px;
+                            }
+                            .advanced-invoice-details {
+                                text-align: right;
+                            }
+                            .advanced-invoice-details p {
+                                margin-bottom: 4px;
+                                font-size: 0.9rem;
+                            }
+                            .advanced-invoice-info-box {
+                                padding: 15px;
+                                border: 1px solid #ddd;
+                                border-radius: 8px;
+                                background-color: #f9f9f9;
+                                height: 100%;
+                            }
+                            .advanced-invoice-info-box h3 {
+                                margin-bottom: 10px;
+                                color: #2980b9;
+                                font-size: 1.1rem;
+                                padding-bottom: 8px;
+                                border-bottom: 1px solid #ddd;
+                            }
+                            .advanced-invoice-table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-bottom: 20px;
+                                font-size: 0.85rem;
+                                border: 1px solid #ddd;
+                            }
+                            .advanced-invoice-table th, .advanced-invoice-table td {
+                                padding: 10px;
+                                text-align: left;
+                                border-bottom: 1px solid #ddd;
+                            }
+                            .advanced-invoice-table th {
+                                background-color: #f1f5f9;
+                                color: #2980b9;
+                                font-weight: 600;
+                            }
+                            .advanced-invoice-totals {
+                                width: 300px;
+                                margin-left: auto;
+                                background-color: #f9f9f9;
+                                padding: 15px;
+                                border-radius: 8px;
+                                border: 1px solid #ddd;
+                            }
+                            .advanced-total-row {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 8px 0;
+                                border-bottom: 1px solid #ddd;
+                            }
+                            .advanced-total-row.final {
+                                font-weight: bold;
+                                font-size: 1.2rem;
+                                border-bottom: 2px solid #3498db;
+                                color: #2980b9;
+                                padding-top: 12px;
+                            }
+                            .advanced-notes {
+                                margin-top: 25px;
+                                padding: 15px;
+                                background-color: #f9f9f9;
+                                border-radius: 8px;
+                                border-left: 4px solid #3498db;
+                            }
+                            .advanced-notes h3 {
+                                color: #2980b9;
+                                margin-bottom: 8px;
+                            }
+                            .advanced-qr-code-beside-logo {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            @media print {
+                                body {
+                                    margin: 0;
+                                    padding: 15px;
+                                }
+                                .advanced-invoice-content {
+                                    page-break-after: always;
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="advanced-invoice-content">
+                            ${invoiceHTML}
+                        </div>
+                        <script>
+                            window.onload = function() {
+                                window.print();
+                                setTimeout(function() {
+                                    window.close();
+                                }, 500);
+                            };
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+                
+                printWindow.document.close();
+            });
+            
+            // Download PDF
+            document.getElementById('download-pdf').addEventListener('click', downloadAdvancedPDF);
+            
+            // Clear all fields
+            document.getElementById('clear-all').addEventListener('click', clearAdvancedAll);
+            
+            // Allow adding items with Enter key
+            document.getElementById('item-name').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addAdvancedItem();
+                }
+            });
+            
+            // QR Code functionality
+            document.getElementById('toggle-qr').addEventListener('click', function() {
+                const qrOptions = document.getElementById('qr-options');
+                qrOptions.classList.toggle('active');
+                this.textContent = qrOptions.classList.contains('active') ? 
+                    'Hide QR Code Options' : 'Show QR Code Options';
+            });
+            
+            document.getElementById('qr-content').addEventListener('change', function() {
+                const value = this.value;
+                document.getElementById('custom-qr-group').style.display = 
+                    value === 'custom' ? 'block' : 'none';
+                document.getElementById('payment-qr-group').style.display = 
+                    value === 'payment' ? 'block' : 'none';
+                document.getElementById('website-qr-group').style.display = 
+                    value === 'website' ? 'block' : 'none';
+            });
+            
+            document.getElementById('generate-qr').addEventListener('click', function() {
+                generateAdvancedQRCode();
+            });
+            
+            // Profile Management functionality
+            document.getElementById('save-profile').addEventListener('click', saveAdvancedProfile);
+            document.getElementById('load-profile').addEventListener('click', loadAdvancedProfile);
+            document.getElementById('delete-profile').addEventListener('click', deleteAdvancedProfile);
+            
+            // Load saved profiles on page load
+            loadAdvancedSavedProfiles();
+        }
+
+        function updateCurrencySymbol() {
+            // Update currency symbol in the preview if invoice is already generated
+            if (document.querySelector('.currency-symbol')) {
+                const currencySymbols = document.querySelectorAll('.currency-symbol');
+                currencySymbols.forEach(el => {
+                    el.textContent = selectedCurrencySymbol;
+                });
+                
+                // Update totals with new currency
+                if (advancedInvoiceItems.length > 0) {
+                    generateAdvancedInvoice();
+                }
+            }
+        }
+
+        function addAdvancedItem() {
+            const name = document.getElementById('item-name').value.trim();
+            const quantity = parseInt(document.getElementById('item-quantity').value);
+            let unit = document.getElementById('item-unit').value;
+            const price = parseFloat(document.getElementById('item-price').value);
+            const tax = parseFloat(document.getElementById('item-tax').value);
+            
+            if (unit === 'custom') {
+                unit = document.getElementById('custom-unit').value.trim();
+                if (!unit) {
+                    alert('Please enter a custom unit');
+                    return;
+                }
+            }
+            
+            if (!name || isNaN(quantity) || isNaN(price)) {
+                alert('Please fill in all required item fields (Name, Quantity, Price)');
+                return;
+            }
+            
+            const item = {
+                name,
+                quantity,
+                unit,
+                price,
+                tax: isNaN(tax) ? 0 : tax
+            };
+            
+            advancedInvoiceItems.push(item);
+            updateAdvancedItemsList();
+            
+            // Clear input fields
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-quantity').value = '1';
+            document.getElementById('item-price').value = '';
+            document.getElementById('item-tax').value = '0';
+            document.getElementById('item-unit').value = 'Pieces';
+            document.getElementById('manual-unit-input').classList.remove('active');
+            document.getElementById('custom-unit').value = '';
+            
+            // Focus back to item name
+            document.getElementById('item-name').focus();
+            
+            // Ensure the layout remains intact
+            setTimeout(() => {
+                adjustAdvancedInvoiceLayout();
+            }, 100);
+        }
+
+        function updateAdvancedItemsList() {
+            const itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = '';
+            
+            advancedInvoiceItems.forEach((item, index) => {
+                const subtotal = item.quantity * item.price;
+                const taxAmount = subtotal * (item.tax / 100);
+                const total = subtotal + taxAmount;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unit}</td>
+                    <td>${selectedCurrencySymbol}${item.price.toFixed(2)}</td>
+                    <td>${item.tax}%</td>
+                    <td>${selectedCurrencySymbol}${total.toFixed(2)}</td>
+                    <td>
+                        <button class="advanced-btn advanced-btn-danger advanced-btn-small" onclick="removeAdvancedItem(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </td>
+                `;
+                itemsList.appendChild(row);
+            });
+            
+            // Adjust layout after updating items
+            adjustAdvancedInvoiceLayout();
+        }
+
+        function adjustAdvancedInvoiceLayout() {
+            // Force reflow to ensure proper rendering
+            const container = document.querySelector('.advanced-invoice-container');
+            if (container) {
+                container.style.display = 'none';
+                container.offsetHeight; // Trigger reflow
+                container.style.display = 'block';
+            }
+            
+            // Adjust table widths if needed
+            const tables = document.querySelectorAll('.items-table, .advanced-invoice-table');
+            tables.forEach(table => {
+                table.style.width = '100%';
+            });
+        }
+
+        function removeAdvancedItem(index) {
+            advancedInvoiceItems.splice(index, 1);
+            updateAdvancedItemsList();
+        }
+
+        // UPDATED: Advanced Invoice Generation Function
+        function generateAdvancedInvoice() {
+            const invoiceNumber = document.getElementById('invoice-number').value;
+            const invoiceDate = document.getElementById('invoice-date').value;
+            const dueDate = document.getElementById('due-date').value;
+            const businessName = document.getElementById('business-name').value;
+            const businessAddress = document.getElementById('business-address').value;
+            const businessEmail = document.getElementById('business-email').value;
+            const businessPhone = document.getElementById('business-phone').value;
+            const clientName = document.getElementById('client-name').value;
+            const clientAddress = document.getElementById('client-address').value;
+            const notes = document.getElementById('notes').value;
+            const logo = document.getElementById('logo-preview').src;
+            
+            if (!invoiceNumber || !businessName || !clientName || advancedInvoiceItems.length === 0) {
+                alert('Please fill in all required fields: Invoice Number, Business Name, Client Name, and at least one item');
+                return;
+            }
+            
+            // Calculate totals
+            let subtotal = 0;
+            let totalTax = 0;
+            
+            advancedInvoiceItems.forEach(item => {
+                const itemSubtotal = item.quantity * item.price;
+                const itemTax = itemSubtotal * (item.tax / 100);
+                subtotal += itemSubtotal;
+                totalTax += itemTax;
+            });
+            
+            const totalAmount = subtotal + totalTax;
+            
+            // Format dates
+            const formattedInvoiceDate = formatDate(invoiceDate);
+            const formattedDueDate = formatDate(dueDate);
+            
+            // UPDATED: Generate invoice HTML with corrected layout
+            const invoiceHTML = `
+                <div class="invoice-pdf-header">
+                    <h2>Advanced Invoice Generator</h2>
+                </div>
+                
+                <div class="advanced-invoice-header">
+                    <div class="advanced-invoice-title-section">
+                        <div>
+                            <h1 class="advanced-invoice-title">INVOICE</h1>
+                            <div class="advanced-invoice-details">
+                                <p><strong>Invoice #:</strong> ${invoiceNumber}</p>
+                                <p><strong>Invoice Date:</strong> ${formattedInvoiceDate}</p>
+                                <p><strong>Due Date:</strong> ${formattedDueDate}</p>
+                                <p><strong>Currency:</strong> ${selectedCurrency} (${selectedCurrencySymbol})</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UPDATED: Logo and QR Code side by side -->
+                <div class="logo-qr-container">
+                    ${logo && document.getElementById('logo-preview').style.display !== 'none' ? 
+                        `<div class="advanced-invoice-logo-container">
+                            <img src="${logo}" class="advanced-invoice-logo" alt="${businessName} Logo">
+                        </div>` : 
+                        `<div class="advanced-invoice-logo-container">
+                            <h3>${businessName}</h3>
+                        </div>`
+                    }
+                    <div id="advanced-qr-code-container" class="advanced-qr-code-beside-logo">
+                        <!-- QR Code will be generated here -->
+                    </div>
+                </div>
+                
+                <!-- UPDATED: From and To sections side by side -->
+                <div class="from-to-container">
+                    <div class="from-section">
+                        <div class="advanced-invoice-info-box">
+                            <h3>From:</h3>
+                            <p><strong>${businessName}</strong></p>
+                            <p>${businessAddress.replace(/\n/g, '<br>')}</p>
+                            <p>Email: ${businessEmail}</p>
+                            <p>Phone: ${businessPhone}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="to-section">
+                        <div class="advanced-invoice-info-box">
+                            <h3>To:</h3>
+                            <p><strong>${clientName}</strong></p>
+                            <p>${clientAddress.replace(/\n/g, '<br>')}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <table class="advanced-invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            <th>Tax</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${advancedInvoiceItems.map(item => {
+                            const itemSubtotal = item.quantity * item.price;
+                            const itemTax = itemSubtotal * (item.tax / 100);
+                            const itemTotal = itemSubtotal + itemTax;
+                            
+                            return `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.quantity}</td>
+                                    <td>${item.unit}</td>
+                                    <td><span class="currency-symbol">${selectedCurrencySymbol}</span>${item.price.toFixed(2)}</td>
+                                    <td>${item.tax}%</td>
+                                    <td><span class="currency-symbol">${selectedCurrencySymbol}</span>${itemTotal.toFixed(2)}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+                
+                <div class="advanced-invoice-totals">
+                    <div class="advanced-total-row">
+                        <span>Subtotal:</span>
+                        <span><span class="currency-symbol">${selectedCurrencySymbol}</span>${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="advanced-total-row">
+                        <span>Tax:</span>
+                        <span><span class="currency-symbol">${selectedCurrencySymbol}</span>${totalTax.toFixed(2)}</span>
+                    </div>
+                    <div class="advanced-total-row final">
+                        <span>Total:</span>
+                        <span><span class="currency-symbol">${selectedCurrencySymbol}</span>${totalAmount.toFixed(2)}</span>
+                    </div>
+                </div>
+                
+                ${notes ? `
+                <div class="advanced-notes">
+                    <h3>Notes</h3>
+                    <p>${notes}</p>
+                </div>
+                ` : ''}
+                
+                <div class="invoice-pdf-footer">
+                </div>
+            `;
+            
+            document.getElementById('advanced-invoice-content').innerHTML = invoiceHTML;
+            document.getElementById('advanced-invoice-content').classList.add('active');
+            
+            // Generate QR code if it exists
+            if (window.currentAdvancedQRCode) {
+                generateAdvancedQRCode();
+            }
+            
+            // Adjust layout after generating invoice
+            setTimeout(() => {
+                adjustAdvancedInvoiceLayout();
+            }, 100);
+        }
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function generateAdvancedQRCode() {
+            const qrType = document.getElementById('qr-content').value;
+            let qrText = '';
+            
+            switch(qrType) {
+                case 'invoice':
+                    const invoiceNumber = document.getElementById('invoice-number').value;
+                    const totalAmount = calculateAdvancedTotalAmount();
+                    qrText = `INVOICE: ${invoiceNumber}\nTOTAL: ${selectedCurrencySymbol}${totalAmount.toFixed(2)}`;
+                    break;
+                case 'payment':
+                    qrText = document.getElementById('payment-link').value.trim();
+                    if (!qrText) {
+                        alert('Please enter a payment link');
+                        return;
+                    }
+                    break;
+                case 'website':
+                    qrText = document.getElementById('website-url').value.trim();
+                    if (!qrText) {
+                        alert('Please enter a website URL');
+                        return;
+                    }
+                    break;
+                case 'custom':
+                    qrText = document.getElementById('custom-qr-text').value.trim();
+                    if (!qrText) {
+                        alert('Please enter custom text for the QR code');
+                        return;
+                    }
+                    break;
+            }
+            
+            // Clear previous QR code
+            const qrContainer = document.getElementById('advanced-qr-code-container');
+            if (!qrContainer) {
+                alert('Please generate the invoice first by clicking "Generate Invoice"');
+                return;
+            }
+            
+            qrContainer.innerHTML = '';
+            
+            // Generate QR code using the qrcode library
+            try {
+                const typeNumber = 0; // Auto detect
+                const errorCorrectionLevel = 'L';
+                const qr = qrcode(typeNumber, errorCorrectionLevel);
+                qr.addData(qrText);
+                qr.make();
+                
+                // Create QR code image
+                const qrImg = qr.createImgTag(4);
+                qrContainer.innerHTML = qrImg;
+                
+                // Store current QR code for regeneration
+                window.currentAdvancedQRCode = {
+                    type: qrType,
+                    text: qrText
+                };
+                
+                alert('QR Code generated successfully!');
+            } catch (error) {
+                console.error('QR Code generation error:', error);
+                alert('Error generating QR code. Please try again.');
+            }
+        }
+
+        function calculateAdvancedTotalAmount() {
+            let subtotal = 0;
+            let totalTax = 0;
+            
+            advancedInvoiceItems.forEach(item => {
+                const itemSubtotal = item.quantity * item.price;
+                const itemTax = itemSubtotal * (item.tax / 100);
+                subtotal += itemSubtotal;
+                totalTax += itemTax;
+            });
+            
+            return subtotal + totalTax;
+        }
+
+        function downloadAdvancedPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const invoiceContent = document.getElementById('advanced-invoice-content');
+            
+            if (!invoiceContent.classList.contains('active')) {
+                alert('Please generate an invoice first');
+                return;
+            }
+            
+            // Create a temporary div for PDF generation with exact styling
+            const tempDiv = document.createElement('div');
+            tempDiv.style.width = '210mm';
+            tempDiv.style.padding = '25px';
+            tempDiv.style.backgroundColor = 'white';
+            tempDiv.style.border = '2px solid #3498db';
+            tempDiv.style.borderRadius = '10px';
+            tempDiv.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+            tempDiv.style.position = 'absolute';
+            tempDiv.style.left = '-9999px';
+            tempDiv.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            document.body.appendChild(tempDiv);
+            
+            // Copy the invoice content to the temporary div with all styles
+            tempDiv.innerHTML = invoiceContent.innerHTML;
+            
+            // Ensure QR code is properly rendered in the temporary div
+            if (window.currentAdvancedQRCode) {
+                const qrContainer = tempDiv.querySelector('#advanced-qr-code-container');
+                if (qrContainer) {
+                    try {
+                        const typeNumber = 0;
+                        const errorCorrectionLevel = 'L';
+                        const qr = qrcode(typeNumber, errorCorrectionLevel);
+                        qr.addData(window.currentAdvancedQRCode.text);
+                        qr.make();
+                        const qrImg = qr.createImgTag(4);
+                        qrContainer.innerHTML = qrImg;
+                    } catch (error) {
+                        console.error('QR Code regeneration error:', error);
+                    }
+                }
+            }
+            
+            // Use html2canvas to capture the invoice with high quality and colors
+            html2canvas(tempDiv, {
+                scale: 3, // Higher scale for better quality
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff',
+                allowTaint: true
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 1.0); // Use JPEG for better color preservation
+                const imgWidth = 210; // A4 width in mm
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                
+                doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                
+                // Save the PDF
+                const invoiceNumber = document.getElementById('invoice-number').value;
+                doc.save(`invoice-${invoiceNumber}.pdf`);
+                
+                // Remove temporary div
+                document.body.removeChild(tempDiv);
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                document.body.removeChild(tempDiv);
+            });
+        }
+
+        // Advanced Profile Management Functions
+        function saveAdvancedProfile() {
+            const profileName = prompt('Enter a name for this profile:');
+            if (!profileName) return;
+            
+            // Save only From (Business) details
+            const profileData = {
+                businessName: document.getElementById('business-name').value,
+                businessAddress: document.getElementById('business-address').value,
+                businessEmail: document.getElementById('business-email').value,
+                businessPhone: document.getElementById('business-phone').value,
+                logo: document.getElementById('logo-preview').src,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            const profiles = JSON.parse(localStorage.getItem('advancedInvoiceProfiles') || '{}');
+            profiles[profileName] = profileData;
+            localStorage.setItem('advancedInvoiceProfiles', JSON.stringify(profiles));
+            
+            alert(`Profile "${profileName}" saved successfully!`);
+            loadAdvancedSavedProfiles();
+        }
+
+        function loadAdvancedProfile() {
+            const profileSelect = document.getElementById('profile-select');
+            const selectedProfile = profileSelect.value;
+            
+            if (!selectedProfile) {
+                alert('Please select a profile to load');
+                return;
+            }
+            
+            const profiles = JSON.parse(localStorage.getItem('advancedInvoiceProfiles') || '{}');
+            const profileData = profiles[selectedProfile];
+            
+            if (!profileData) {
+                alert('Profile not found');
+                return;
+            }
+            
+            // Load only From (Business) details from profile
+            document.getElementById('business-name').value = profileData.businessName || '';
+            document.getElementById('business-address').value = profileData.businessAddress || '';
+            document.getElementById('business-email').value = profileData.businessEmail || '';
+            document.getElementById('business-phone').value = profileData.businessPhone || '';
+            
+            // Load logo if available
+            if (profileData.logo) {
+                document.getElementById('logo-preview').src = profileData.logo;
+                document.getElementById('logo-preview').style.display = 'block';
+            }
+            
+            alert(`Profile "${selectedProfile}" loaded successfully!`);
+        }
+
+        function deleteAdvancedProfile() {
+            const profileSelect = document.getElementById('profile-select');
+            const selectedProfile = profileSelect.value;
+            
+            if (!selectedProfile) {
+                alert('Please select a profile to delete');
+                return;
+            }
+            
+            if (confirm(`Are you sure you want to delete the profile "${selectedProfile}"?`)) {
+                const profiles = JSON.parse(localStorage.getItem('advancedInvoiceProfiles') || '{}');
+                delete profiles[selectedProfile];
+                localStorage.setItem('advancedInvoiceProfiles', JSON.stringify(profiles));
+                
+                alert(`Profile "${selectedProfile}" deleted successfully!`);
+                loadAdvancedSavedProfiles();
+            }
+        }
+
+        function loadAdvancedSavedProfiles() {
+            const profileSelect = document.getElementById('profile-select');
+            profileSelect.innerHTML = '<option value="">-- Select a profile --</option>';
+            
+            const profiles = JSON.parse(localStorage.getItem('advancedInvoiceProfiles') || '{}');
+            
+            Object.keys(profiles).forEach(profileName => {
+                const option = document.createElement('option');
+                option.value = profileName;
+                option.textContent = profileName;
+                profileSelect.appendChild(option);
+            });
+        }
+
+        function clearAdvancedAll() {
+            if (confirm('Are you sure you want to clear all data?')) {
+                // Clear form fields
+                document.getElementById('invoice-number').value = 'INV-' + Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('business-name').value = '';
+                document.getElementById('business-address').value = '';
+                document.getElementById('business-email').value = '';
+                document.getElementById('business-phone').value = '';
+                document.getElementById('client-name').value = '';
+                document.getElementById('client-address').value = '';
+                document.getElementById('notes').value = '';
+                
+                // Clear logo
+                document.getElementById('logo-preview').src = '';
+                document.getElementById('logo-preview').style.display = 'none';
+                document.getElementById('business-logo').value = '';
+                
+                // Clear custom currency
+                document.getElementById('custom-currency-code').value = '';
+                document.getElementById('custom-currency-symbol').value = '';
+                document.getElementById('manual-currency-input').classList.remove('active');
+                document.getElementById('currency-select').value = 'USD';
+                
+                // Clear items
+                advancedInvoiceItems = [];
+                updateAdvancedItemsList();
+                
+                // Clear QR code
+                window.currentAdvancedQRCode = null;
+                
+                // Hide invoice content
+                document.getElementById('advanced-invoice-content').classList.remove('active');
+            }
+        }
+
+        // Make removeAdvancedItem function available globally
+        window.removeAdvancedItem = removeAdvancedItem;
 
         // Category Functions
         function openCategoryPopupFunc() {
@@ -2767,7 +5195,16 @@
         }
 
         // Initialize the app when the DOM is loaded
-        document.addEventListener('DOMContentLoaded', initApp);
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            
+            // Additional layout adjustments for invoice section
+            window.addEventListener('resize', function() {
+                if (currentView === 'advancedInvoice') {
+                    adjustAdvancedInvoiceLayout();
+                }
+            });
+        });
     </script>
 </body>
 </html>
